@@ -1,14 +1,117 @@
+/*
+================================
+CONFIG
+================================
+*/
+
+const IMAGE_WIDTH = 1200;
+const IMAGE_HEIGHT = 700;
+
+
+
+/*
+================================
+STATE
+================================
+*/
+
 let storyData = null;
 let currentNode = null;
+
+
+
+/*
+================================
+UTILITIES
+================================
+*/
+
+// preload an image into browser cache
+function preloadImage(src) {
+
+  const img = new Image();
+  img.src = src;
+
+}
+
+
+// generate image URL from prompt
+function getPromptImage(prompt) {
+
+  const seed = encodeURIComponent(prompt);
+  return `https://picsum.photos/seed/${seed}/${IMAGE_WIDTH}/${IMAGE_HEIGHT}`;
+
+}
+
+
+
+/*
+================================
+STORY VALIDATION
+================================
+*/
+
+function validateStory(story) {
+
+  const nodes = story.nodes;
+
+  if (!nodes[story.start]) {
+    console.error(`Start node "${story.start}" does not exist.`);
+  }
+
+  Object.keys(nodes).forEach(nodeKey => {
+
+    const node = nodes[nodeKey];
+
+    if (!node.text) {
+      console.warn(`Node "${nodeKey}" is missing text.`);
+    }
+
+    if (!node.choices || !Array.isArray(node.choices)) {
+      console.warn(`Node "${nodeKey}" has no valid choices array.`);
+      return;
+    }
+
+    node.choices.forEach(choice => {
+
+      if (!nodes[choice.next]) {
+        console.error(
+          `Node "${nodeKey}" points to missing node "${choice.next}".`
+        );
+      }
+
+    });
+
+  });
+
+}
+
+
+
+/*
+================================
+STORY LOADING
+================================
+*/
 
 async function loadStory() {
 
   const response = await fetch("data/story.json");
   storyData = await response.json();
 
+  validateStory(storyData);
+
   startStory();
 
 }
+
+
+
+/*
+================================
+ENGINE
+================================
+*/
 
 function startStory() {
 
@@ -16,6 +119,23 @@ function startStory() {
   renderNode();
 
 }
+
+
+
+function goToNode(nodeKey) {
+
+  currentNode = nodeKey;
+  renderNode();
+
+}
+
+
+
+/*
+================================
+RENDERING
+================================
+*/
 
 function renderNode() {
 
@@ -27,17 +147,41 @@ function renderNode() {
 
   storyText.innerText = node.text;
 
-  // ⭐ Image handling
+  /*
+  --------------------------
+  IMAGE HANDLING
+  --------------------------
+  */
+
+  let newSrc = null;
+
   if (node.prompt) {
 
-    const seed = encodeURIComponent(node.prompt);
-    media.src = `https://picsum.photos/seed/${seed}/1200/700`;
+    newSrc = getPromptImage(node.prompt);
 
   } else if (node.media) {
 
-    media.src = node.media;
+    newSrc = node.media;
 
   }
+
+  if (newSrc) {
+
+    media.style.opacity = 0;
+
+    setTimeout(() => {
+      media.src = newSrc;
+      media.style.opacity = 1;
+    }, 200);
+
+  }
+
+
+  /*
+  --------------------------
+  CHOICES
+  --------------------------
+  */
 
   choicesContainer.innerHTML = "";
 
@@ -49,15 +193,45 @@ function renderNode() {
 
     button.onclick = () => {
 
-      currentNode = choice.next;
-      renderNode();
+      goToNode(choice.next);
 
     };
 
     choicesContainer.appendChild(button);
 
+
+    /*
+    --------------------------
+    PRELOAD NEXT SCENE
+    --------------------------
+    */
+
+    const nextNode = storyData.nodes[choice.next];
+
+    if (nextNode) {
+
+      if (nextNode.prompt) {
+
+        preloadImage(getPromptImage(nextNode.prompt));
+
+      } else if (nextNode.media) {
+
+        preloadImage(nextNode.media);
+
+      }
+
+    }
+
   });
 
 }
+
+
+
+/*
+================================
+BOOT
+================================
+*/
 
 loadStory();
