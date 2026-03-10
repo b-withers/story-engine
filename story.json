@@ -1,0 +1,56 @@
+{
+  "start": "intro",
+  "nodes": {
+    "intro": {
+      "text": "You wake up in a dark forest. A path splits in two directions.",
+      "choices": [
+        {
+          "text": "Go left toward the mountains",
+          "next": "mountain"
+        },
+        {
+          "text": "Go right toward the river",
+          "next": "river"
+        }
+      ]
+    },
+
+    "mountain": {
+      "text": "You climb the rocky trail and find a cave entrance.",
+      "choices": [
+        {
+          "text": "Enter the cave",
+          "next": "treasure"
+        },
+        {
+          "text": "Turn back",
+          "next": "intro"
+        }
+      ]
+    },
+
+    "river": {
+      "text": "You reach a rushing river. A small boat is tied to a tree.",
+      "choices": [
+        {
+          "text": "Take the boat",
+          "next": "island"
+        },
+        {
+          "text": "Return to the forest",
+          "next": "intro"
+        }
+      ]
+    },
+
+    "treasure": {
+      "text": "Inside the cave you discover a hidden treasure. You win!",
+      "choices": []
+    },
+
+    "island": {
+      "text": "The boat carries you to a mysterious island. Adventure awaits!",
+      "choices": []
+    }
+  }
+}

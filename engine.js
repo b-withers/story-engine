@@ -1,9 +1,37 @@
-function spaceAdventure() {
-  document.getElementById("story").innerText =
-  "You climb into a rocket ship and blast off toward the moon.";
+let storyData = null;
+let currentNode = null;
+
+async function loadStory() {
+  const response = await fetch("story.json");
+  storyData = await response.json();
+
+  startStory();
 }
 
-function forestAdventure() {
-  document.getElementById("story").innerText =
-  "You step into a dark forest where fireflies glow between the trees.";
+function startStory() {
+  currentNode = storyData.start;
+  renderNode();
 }
+
+function renderNode() {
+  const node = storyData.nodes[currentNode];
+
+  const storyText = document.getElementById("story-text");
+  const choicesContainer = document.getElementById("choices");
+
+  storyText.innerText = node.text;
+  choicesContainer.innerHTML = "";
+
+  node.choices.forEach(choice => {
+    const button = document.createElement("button");
+    button.innerText = choice.text;
+    button.onclick = () => {
+      currentNode = choice.next;
+      renderNode();
+    };
+
+    choicesContainer.appendChild(button);
+  });
+}
+
+loadStory();

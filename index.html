@@ -1,29 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>Story Engine</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial;
+      padding: 40px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    button {
+      display: block;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+    }
+  </style>
 </head>
 
 <body>
 
-<h1>Story Engine</h1>
+<h1>Interactive Story</h1>
 
-<div id="story-container">
+<p id="story-text"></p>
 
-  <p id="story">
-    You sit at the kitchen table with your daughters.
-
-    "What adventure should we imagine tonight?"
-  </p>
-
-  <div id="choices">
-    <button onclick="spaceAdventure()">Space Adventure</button>
-    <button onclick="forestAdventure()">Forest Mystery</button>
-  </div>
-
-</div>
+<div id="choices"></div>
 
 <script src="engine.js"></script>
 
