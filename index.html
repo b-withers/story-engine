@@ -9,17 +9,51 @@
 
 <body>
 
-<div id="scene">
+<div id="homepage">
 
-<img id="story-media">
+  <h1>Choose Your Adventure</h1>
+
+  <div class="story-grid">
+
+    <div class="story-card" data-story="forest">
+      <h2>Forest Adventure</h2>
+      <button>Play</button>
+    </div>
+
+    <div class="story-card" data-story="haunted">
+      <h2>Haunted Cabin</h2>
+      <button>Play</button>
+    </div>
+
+    <div class="story-card" data-story="space">
+      <h2>Space Mission</h2>
+      <button>Play</button>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div id="scene" style="display:none;">
+
+  <img id="story-media">
+
+  <div id="story-card">
 
 <div id="story-card">
 
-<div id="story-text"></div>
+  <button id="home-button">← Return Home</button>
 
-<div id="choices"></div>
+  <div id="story-text"></div>
+
+  <div id="choices"></div>
 
 </div>
+
+    <div id="story-text"></div>
+    <div id="choices"></div>
+  </div>
 
 </div>
 

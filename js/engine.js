@@ -226,6 +226,34 @@ function renderNode() {
 
 }
 
+document.getElementById("home-button").onclick = () => {
+
+  // hide story scene
+  document.getElementById("scene").style.display = "none";
+
+  // show homepage
+  document.getElementById("homepage").style.display = "block";
+
+  // reset story state
+  currentNode = null;
+
+};
+
+document.querySelectorAll(".story-card").forEach(card => {
+
+  card.onclick = () => {
+
+    const story = card.dataset.story;
+
+    document.getElementById("homepage").style.display = "none";
+    document.getElementById("scene").style.display = "block";
+
+    loadStory(`data/stories/${story}.json`);
+
+  };
+
+});
+
 
 
 /*

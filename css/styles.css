@@ -5,6 +5,84 @@ body {
   color:white;
 }
 
+/* HOMEPAGE */
+
+#homepage {
+
+  text-align: center;
+  padding: 40px;
+
+}
+
+.story-grid {
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 30px;
+
+  max-width: 1000px;
+  margin: 40px auto;
+
+}
+
+.story-card {
+
+  background: #222;
+  border-radius: 10px;
+  padding: 40px 20px;
+
+  transition: transform .2s ease, box-shadow .2s ease;
+
+}
+
+.story-card:hover {
+
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,.4);
+
+}
+
+.story-card h2 {
+
+  margin-bottom: 20px;
+
+}
+
+#home-button {
+
+  position: absolute;
+  top: -40px;
+  left: 0;
+
+  padding: 6px 12px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: rgba(0,0,0,0.6);
+  color: white;
+
+  cursor: pointer;
+
+}
+
+#home-button:hover {
+
+  background: rgba(0,0,0,0.8);
+
+}
+
+.story-card button {
+
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+
+  background: white;
+  cursor: pointer;
+
+}
+
 #scene {
   position:relative;
   height:100vh;
