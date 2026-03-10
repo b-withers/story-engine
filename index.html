@@ -1,12 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Story Engine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
 
 <h1>Story Engine</h1>
-<p>The adventure begins...</p>
+
+<div id="story-container">
+
+  <p id="story">
+    You sit at the kitchen table with your daughters.
+
+    "What adventure should we imagine tonight?"
+  </p>
+
+  <div id="choices">
+    <button onclick="spaceAdventure()">Space Adventure</button>
+    <button onclick="forestAdventure()">Forest Mystery</button>
+  </div>
+
+</div>
+
+<script src="engine.js"></script>
 
 </body>
 </html>
