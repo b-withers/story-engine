@@ -2,7 +2,7 @@ let storyData = null;
 let currentNode = null;
 
 async function loadStory() {
-  const response = await fetch("story.json");
+  const response = await fetch("data/story.json");
   storyData = await response.json();
 
   startStory();
