@@ -4,7 +4,7 @@
 
     "intro": {
       "text": "You wake up in a foggy forest. A narrow path splits ahead.",
-      "media": "https://picsum.photos/1600/900?random=1",
+      "prompt": "mysterious foggy forest path cinematic lighting fantasy",
       "choices": [
         {
           "text": "Follow the forest path",
@@ -19,7 +19,7 @@
 
     "river": {
       "text": "You arrive at a rushing river. The water looks deep and cold.",
-      "media": "https://picsum.photos/seed/1600/900?random=2",
+      "prompt": "wild forest river rushing water cinematic fantasy illustration",
       "choices": [
         {
           "text": "Cross the river",
@@ -34,7 +34,7 @@
 
     "hill": {
       "text": "From the hilltop you see smoke rising from a cabin in the valley.",
-      "media": "https://picsum.photos/seed/1600/900?random=3",
+      "prompt": "foggy forest valley with wooden cabin chimney smoke cinematic fantasy",
       "choices": [
         {
           "text": "Head toward the cabin",
@@ -49,7 +49,7 @@
 
     "cabin": {
       "text": "You reach the old wooden cabin. The door slowly creaks open...",
-      "media": "https://picsum.photos/seed/1600/900?random=4",
+      "prompt": "old wooden cabin in misty forest at dusk cinematic lighting",
       "choices": [
         {
           "text": "Enter the cabin",
@@ -60,7 +60,7 @@
 
     "ending": {
       "text": "Inside the cabin you find warmth, food, and shelter. You survived the night.",
-      "media": "https://picsum.photos/seed/1600/900?random=5",
+      "prompt": "warm cabin interior fireplace cozy fantasy illustration",
       "choices": [
         {
           "text": "Restart adventure",
