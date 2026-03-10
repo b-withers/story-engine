@@ -18,13 +18,21 @@ function renderNode() {
 
   const storyText = document.getElementById("story-text");
   const choicesContainer = document.getElementById("choices");
+  const media = document.getElementById("story-media");
 
   storyText.innerText = node.text;
+
+  // ⭐ NEW: load scene image
+  if (node.media) {
+    media.src = node.media;
+  }
+
   choicesContainer.innerHTML = "";
 
   node.choices.forEach(choice => {
     const button = document.createElement("button");
     button.innerText = choice.text;
+
     button.onclick = () => {
       currentNode = choice.next;
       renderNode();

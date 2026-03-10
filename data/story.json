@@ -3,37 +3,67 @@
   "nodes": {
 
     "intro": {
-      "text": "You wake up in a foggy forest. A path splits ahead.",
-      "media": "assets/forest.gif",
+      "text": "You wake up in a foggy forest. A narrow path splits ahead.",
+      "media": "https://picsum.photos/1600/900?random=1",
       "choices": [
         {
-          "text": "Follow the path",
+          "text": "Follow the forest path",
           "next": "river"
         },
         {
-          "text": "Climb the hill",
-          "next": "cave"
+          "text": "Climb the rocky hill",
+          "next": "hill"
         }
       ]
     },
 
     "river": {
-      "text": "You reach a rushing river.",
-      "media": "assets/river.gif",
+      "text": "You arrive at a rushing river. The water looks deep and cold.",
+      "media": "https://picsum.photos/seed/1600/900?random=2",
       "choices": [
         {
-          "text": "Follow the river",
+          "text": "Cross the river",
+          "next": "cabin"
+        },
+        {
+          "text": "Return to the forest",
           "next": "intro"
         }
       ]
     },
 
-    "cave": {
-      "text": "You find a cave entrance in the mountain.",
-      "media": "assets/cave.gif",
+    "hill": {
+      "text": "From the hilltop you see smoke rising from a cabin in the valley.",
+      "media": "https://picsum.photos/seed/1600/900?random=3",
       "choices": [
         {
-          "text": "Enter the cave",
+          "text": "Head toward the cabin",
+          "next": "cabin"
+        },
+        {
+          "text": "Return to the forest",
+          "next": "intro"
+        }
+      ]
+    },
+
+    "cabin": {
+      "text": "You reach the old wooden cabin. The door slowly creaks open...",
+      "media": "https://picsum.photos/seed/1600/900?random=4",
+      "choices": [
+        {
+          "text": "Enter the cabin",
+          "next": "ending"
+        }
+      ]
+    },
+
+    "ending": {
+      "text": "Inside the cabin you find warmth, food, and shelter. You survived the night.",
+      "media": "https://picsum.photos/seed/1600/900?random=5",
+      "choices": [
+        {
+          "text": "Restart adventure",
           "next": "intro"
         }
       ]
